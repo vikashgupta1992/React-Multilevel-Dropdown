@@ -106,7 +106,7 @@ function App() {
       <div className={`submenu submenu_${fieldId}`}>
         {subMenu.map((subItem) => (
             <div key={subItem.id} >
-              <div className="menuItem">
+              <div className="menuItem" onClick={() => handleChange({id: subItem.id, item: subItem.label})}>
                 <span style={styles.arrow} onClick={toggleSubMenu} data-key-id={subItem.id} className="arrow-item">{subItem.submenu ? '➤' : ''}</span>
                 {subItem.label}
               </div>
@@ -132,10 +132,10 @@ function App() {
             <div style={{ ...styles.btnStyle, ...styles.submenuDropdown, display: isVisible ? 'block' : 'none'}}>
               <div style={styles.submenuDropdownParent}>
                 {menuData.map((item) => (
-                    <div key={item.id} onClick={() => handleChange({id: item.id, item: item.label})}>
-                      <div className="menuItem">
-                      <span style={styles.arrow} data-key-id={item.id} onClick={toggleSubMenu} className="arrow-item">{item.submenu ? '➤' : ''}</span>
-                      {item.label}
+                    <div key={item.id} >
+                      <div className="menuItem" onClick={() => handleChange({id: item.id, item: item.label})}>
+                        <span style={styles.arrow} data-key-id={item.id} onClick={toggleSubMenu} className="arrow-item">{item.submenu ? '➤' : ''}</span>
+                        {item.label}
                       </div>
                       {item.submenu && renderSubMenu(item.submenu, item.id)}
                     </div>
